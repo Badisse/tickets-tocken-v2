@@ -19,8 +19,8 @@ const Header = () => {
     }
 
     return (
-        <div id="header">
-        <Link to='/' id='logo'>NFT Room</Link>
+      <div id="header">
+        <Link to='/' id='logo'>Tickets Token</Link>
 
         <div id="link-containers">
           <a>Start Hunting</a>
@@ -28,7 +28,7 @@ const Header = () => {
           <a>Community</a>
           <a>Craft NFT</a>
 
-          <button id="connect-wallet" onClick={handleWallet} >{!accounts[0] ? 'Connect Wallet' : `${accounts[0].substring(0, 6)}...${accounts[0].substring(accounts[0].length-4)}`}</button>
+          <button id="connect-wallet" onClick={handleWallet} >{!accounts ? 'Connect Wallet' : `${accounts[0].substring(0, 6)}...${accounts[0].substring(accounts[0].length-4)}`}</button>
         </div>
       </div>
     );
