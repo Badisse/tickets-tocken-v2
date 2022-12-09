@@ -53,6 +53,16 @@ contract SingleStaking is Ownable {
         stakingToken = IERC20 (_ttkAddress) ; 
     }
 
+        /// ::: GETTERS ::: ///
+
+    function getPoolInfos (uint pIdx) public view returns (poolInfo memory){
+        return PoolInfo[pIdx] ;
+    }
+
+    function getUserInfo (uint pIdx, address _address) public view returns (userInfo memory){
+        return UserInfo[pIdx][_address] ;
+    }
+
         /// ::: REWARDS TRACKING AND UPDATES ::: ///
 
     modifier updateRewards (uint pIdx, address _address) {
