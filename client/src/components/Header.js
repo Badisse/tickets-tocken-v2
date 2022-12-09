@@ -23,10 +23,9 @@ const Header = () => {
         <Link to='/' id='logo'>Tickets Token</Link>
 
         <div id="link-containers">
-          <a>Start Hunting</a>
-          <a>Dark NFTs</a>
-          <a>Community</a>
-          <a>Craft NFT</a>
+          <Link to='/explore'>Explore</Link>
+          <Link to='/create'>Create</Link>
+          <Link to='/dashboard'>Dashboard</Link>
 
           <button id="connect-wallet" onClick={handleWallet} >{!accounts ? 'Connect Wallet' : `${accounts[0].substring(0, 6)}...${accounts[0].substring(accounts[0].length-4)}`}</button>
         </div>
