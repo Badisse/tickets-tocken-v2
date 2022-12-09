@@ -30,38 +30,45 @@ contract EventV2 is Ownable, ReentrancyGuard {
     address public vault = 0x8424033c53Ce83A5898e26e569d3bA0794710Fed;
     mapping(uint => EventInfo) public events;
 
-    event EventCreated(
-        uint id,
-        EventInfo newEvent
-    );
+    event EventCreated(uint id, EventInfo newEvent);
 
-    event EventUpdated(
-        uint id,
-        EventInfo updatedEvent
-    );
+    event EventUpdated(uint id, EventInfo updatedEvent);
 
     modifier onlyEventOwner(address _eventOwner) {
         require(msg.sender == _eventOwner, "Not allowed");
         _;
     }
 
-    function update(address _vault) external onlyOwner() {
+    function update(address _vault) external onlyOwner {
         vault = _vault;
     }
 
     function createEvent(
-        EventInfo calldata _eventInfo,
+        string calldata _name,
+        string calldata _date,
+        string calldata _location,
+        string calldata _image,
+        bool _onSale,
+        EventType _eventType,
         TicketV2.TicketInfo[] calldata _ticketsInfo
     ) external {
         uint id = _eventIds.current();
-        TicketV2 ticket = new TicketV2(
-            msg.sender
-        );
+        TicketV2 ticket = new TicketV2(msg.sender);
 
-        events[id] = _eventInfo;
+        events[id] = EventInfo(
+            msg.sender,
+            _name,
+            _date,
+            _location,
+            _image,
+            _eventType,
+            _onSale,
+            ticket
+        );
+        events[id].ticket = ticket;
 
         ticket.createTickets(_ticketsInfo);
-        
+
         emit EventCreated(id, events[id]);
 
         _eventIds.increment();
@@ -97,17 +104,24 @@ contract EventV2 is Ownable, ReentrancyGuard {
         uint _eventId,
         uint[] calldata _ids,
         uint[] calldata _amounts
-    ) external payable onlyOwner() nonReentrant() {
+    ) external payable onlyOwner nonReentrant {
+        events[_eventId].ticket.mintTickets(
+            msg.sender,
+            msg.value,
+            _ids,
+            _amounts
+        );
 
-        events[_eventId].ticket.mintTickets(msg.sender, msg.value, _ids, _amounts);
+        uint eventOwnerPayableValue = (msg.value * 95) / 100;
+        uint vaultPayableValue = (msg.value * 5) / 100;
 
-        uint eventOwnerPayableValue = msg.value * 95 / 100;
-        uint vaultPayableValue = msg.value * 5 / 100;
-
-        (bool sentEventOwner,) = events[_eventId].owner.call{value: eventOwnerPayableValue}("");
-        (bool sentVault,) = events[_eventId].owner.call{value: vaultPayableValue}("");
+        (bool sentEventOwner, ) = events[_eventId].owner.call{
+            value: eventOwnerPayableValue
+        }("");
+        (bool sentVault, ) = events[_eventId].owner.call{
+            value: vaultPayableValue
+        }("");
         require(sentEventOwner, "Transaction to Event Owner failed");
         require(sentVault, "Transaction to Vault failed");
-
     }
 }
