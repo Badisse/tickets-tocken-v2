@@ -4,6 +4,8 @@ import "../styles/Hero.css";
 import { useEffect, useState } from "react"
 import { useEth } from "../contexts/EthContext";
 
+import TokenInterface from "../components/admin/TokenInterface"
+
 function Admin() {
 
     const { state: { accounts, singleStakingContract } } = useEth()
@@ -32,11 +34,10 @@ function Admin() {
 
     if (isOwner) {
         content =
-            <div>
+            <div id = "hero">
                 <Header></Header>
-                <div id="hero">
-                    <h5 id="header-subtext"> Welcome admin</h5>
-                </div>
+                <h5 id="header-subtext"> Welcome admin</h5>
+                <TokenInterface/>
             </div>
     }
 
