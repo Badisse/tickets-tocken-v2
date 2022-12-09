@@ -17,11 +17,11 @@ const connectWallet = async (dispatch) => {
           eventAddress = eventArtifact.networks[networkID].address;
           eventContract = new web3.eth.Contract(eventArtifact.abi, eventAddress);
           tokenAddress = tokenArtifact.networks[networkID].address;
-          tokenContract = new Web3.eth.Contract(tokenArtifact.abi, tokenAddress);
+          tokenContract = new web3.eth.Contract(tokenArtifact.abi, tokenAddress);
           icoAddress = icoArtifact.networks[networkID].address ;
-          icoContract = new Web3.eth.Contract(icoArtifact.abi, icoAddress);
+          icoContract = new web3.eth.Contract(icoArtifact.abi, icoAddress);
           singleStakingAddress = icoArtifact.networks[networkID].address ;
-          singleStakingContract = new Web3.eth.Contract(singleStakingArtifact.abi, singleStakingAddress) ;
+          singleStakingContract = new web3.eth.Contract(singleStakingArtifact.abi, singleStakingAddress) ;
         } catch (err) {
           console.error(err);
         }
