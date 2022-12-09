@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useEth } from "../contexts/EthContext";
 
 import TokenInterface from "../components/admin/TokenInterface"
+import StakingInterface from "../components/admin/StakingInterface";
 
 function Admin() {
 
@@ -38,6 +39,7 @@ function Admin() {
                 <Header></Header>
                 <h5 id="header-subtext"> Welcome admin</h5>
                 <TokenInterface/>
+                <StakingInterface/>
             </div>
     }
 

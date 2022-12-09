@@ -20,7 +20,7 @@ const connectWallet = async (dispatch) => {
           tokenContract = new web3.eth.Contract(tokenArtifact.abi, tokenAddress);
           icoAddress = icoArtifact.networks[networkID].address ;
           icoContract = new web3.eth.Contract(icoArtifact.abi, icoAddress);
-          singleStakingAddress = icoArtifact.networks[networkID].address ;
+          singleStakingAddress = singleStakingArtifact.networks[networkID].address ;
           singleStakingContract = new web3.eth.Contract(singleStakingArtifact.abi, singleStakingAddress) ;
         } catch (err) {
           console.error(err);
