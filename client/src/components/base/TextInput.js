@@ -4,7 +4,7 @@ import '../../styles/base/TextInput.css';
 //Base Input Component
 //Usage: <Input width='550px' height='30px' />
 
-const TextInput = ({width,height, placeholder='default input', icon,type}) => {
+const TextInput = ({width,height, placeholder='default input', icon,type, disabled}) => {
   return (
     <div className="search-wrapper">
       <div
@@ -20,7 +20,7 @@ const TextInput = ({width,height, placeholder='default input', icon,type}) => {
                 )`,
         }}
       >
-        <input id="search" placeholder={placeholder} type={type}/>
+        <input id="search" placeholder={placeholder} type={type} disabled ={disabled}/>
         {icon}
       </div>
     </div>
@@ -28,3 +28,5 @@ const TextInput = ({width,height, placeholder='default input', icon,type}) => {
 };
 
 export default TextInput;
+
+// first addy 0xb1cfBb1196f909D1F5Aa28A1738dd0ff6873301A
