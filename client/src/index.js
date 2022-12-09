@@ -8,6 +8,7 @@ import Create from "./pages/Create";
 import Explore from "./pages/Explore";
 import NFTDetail from "./pages/NFTDetail";
 import Dashboard from './pages/Dashboard';
+import Staking from "./pages/Staking"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,7 @@ root.render(
           <Route path="/explore" element={<Explore />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/detail" element={<NFTDetail />} />
+          <Route path="/staking" element={<Staking />} />
         </Routes>
       </BrowserRouter>,
     </EthProvider>
