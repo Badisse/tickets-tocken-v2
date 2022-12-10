@@ -1,49 +1,35 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import "../styles/Hero.css";
 import Select from "../components/base/Select"
+import Header from "../components/Header"
 
-// import StakingForm from "./StakingForm"
-// import StakingDetails from "./StakingDetails"
-
-/*
-{poolId && <StakingForm poolId = {poolId} ></StakingForm>}
-{poolId && <StakingDetails poolId = {poolId} ></StakingDetails>}
-*/
+import StakingForm from "../components/staking/StakingForm"
+import StakingDetails from "../components/staking/StakingDetails"
 
 const Staking = () => {
 
-    const [poolId, setPoolId] = useState()
+    const [lockUp, setLockUp] = useState()
 
     const poolIdHandler = (lockup) => {
-        
-        switch (lockup){
-            case "No lock-up" :
-                setPoolId("1")
-                break
-            case "1 month" : 
-                setPoolId("2") 
-                break
-            case "3 months" :
-                setPoolId("3")
-                break
-            case "6 months" : 
-                setPoolId("4")
-                break
-        }
-        setPoolId(lockup)
+        setLockUp(lockup)
     }
 
     return (
-        <div id = "hero">
-            <h5 id = "header-subtext"> Stake your tokens </h5>
-            <h5 id = "header-subtext"> You can stake your tokens for variables APR depending
-                of the lockup time you will chose.</h5>
-            <h5 id = "header-subtext" > Please select a pool </h5>
-            <Select 
-            items = {["No lock-up","1 month","3 months"," 6 months"]} 
-            onChange = {poolIdHandler} 
-            name = "Select lock-up period">
-            </Select>
+        <div>
+            <Header />
+            <div id="hero">
+                <h5 id="header-subtext"> Stake your tokens </h5>
+                <h5 id="header-subtext"> You can stake your tokens for variables APR depending
+                    of the lockup time you will chose.</h5>
+                <h5 id="header-subtext" > Please select a pool </h5>
+                <Select
+                    items={["No lock-up", "1 month lock-up", "3 months lock-up", " 6 months lock-up"]}
+                    onChange={poolIdHandler}
+                    name="Select lock-up period">
+                </Select>
+                {lockUp && <StakingForm lockUp={lockUp} ></StakingForm>}
+                {lockUp && <StakingDetails lockUp={lockUp} ></StakingDetails>}
+            </div>
         </div>
     )
 
