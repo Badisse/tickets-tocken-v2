@@ -18,8 +18,8 @@ function StakingPool(props) {
 
     const setUpPool = async (e) => {
         e.preventDefault()
-        if (rewardRate <= 0) {
-            alert("please input a positiv reward rate")
+        if (rewardRate <= 0 || timelock < 0) {
+            alert("please input a positiv reward rate and a positiv or nul time lock")
         }
         const weiValue = await web3.utils.toWei(rewardRate.toString(), "ether")
         const poolSet = await singleStakingContract.methods.setPool(
@@ -64,7 +64,10 @@ function StakingPool(props) {
 
     useEffect(() => {
         setTimeout(async () => {
-            const thisPool = await singleStakingContract.methods.getPoolInfos(1).call()
+            if (!poolId){
+                return ;
+            }
+            const thisPool = await singleStakingContract.methods.getPoolInfos(poolId).call()
             const rate = thisPool.rewardRate
             if (thisPool.totalStaked !== 0) {
                 let APY = ((365 * 24 * 60 * 60 * (rate
