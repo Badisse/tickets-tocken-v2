@@ -49,6 +49,8 @@ contract SingleStaking is Ownable {
     /// We keep users infos for each pool. Uint : pool idx
     mapping (uint => mapping (address => userInfo)) public UserInfo;
 
+    event Staked(address staker, uint pIdx);
+
     constructor (address _ttkAddress){
         stakingToken = IERC20 (_ttkAddress) ; 
     }
@@ -135,6 +137,7 @@ contract SingleStaking is Ownable {
         resetUserTimer (pIdx) ; 
         UserInfo[pIdx][msg.sender].balance += _amount ; 
         PoolInfo[pIdx].totalStaked += _amount ; 
+        emit Staked(msg.sender, pIdx) ;
     }
 
     function withdraw(uint pIdx, uint _amount) external updateRewards (pIdx, msg.sender) {
