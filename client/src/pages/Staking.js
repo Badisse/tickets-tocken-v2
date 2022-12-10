@@ -4,7 +4,6 @@ import Select from "../components/base/Select"
 import Header from "../components/Header"
 
 import StakingForm from "../components/staking/StakingForm"
-import StakingDetails from "../components/staking/StakingDetails"
 
 const Staking = () => {
 
@@ -28,7 +27,6 @@ const Staking = () => {
                     name="Select lock-up period">
                 </Select>
                 {lockUp && <StakingForm lockUp={lockUp} ></StakingForm>}
-                {lockUp && <StakingDetails lockUp={lockUp} ></StakingDetails>}
             </div>
         </div>
     )

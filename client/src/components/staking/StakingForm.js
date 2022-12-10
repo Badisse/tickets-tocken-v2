@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 
 import "../../styles/Hero.css"
 
+import StakingDetails from "./StakingDetails"
 import Input from "../base/TextInput"
 import Button from "../base/Button"
 
@@ -13,9 +14,10 @@ const StakingForm = (props) => {
 
     const [poolId, setPoolId] = useState()
     const [APR, setAPR] = useState()
-    const [hasApproved, setHasApproved] = useState(true)
+    const [hasApproved, setHasApproved] = useState()
     const [amount, setAmount] = useState()
     const [balance, setBalance] = useState("your balance")
+    const [event, setEvent] = useState()
 
     const isItApproved = async () => {
         let allowance = await tokenContract.methods.allowance(accounts[0], singleStakingContract._address).call()
@@ -55,6 +57,7 @@ const StakingForm = (props) => {
             alert("amount not staked")
         }
         alert(`successfully staked ${weiValue}`)
+        getBalance()
     }
 
     const updatePoolId = async () => {
@@ -84,9 +87,19 @@ const StakingForm = (props) => {
         setBalance (ethValue)
     }
 
+    const captureBalanceUpdate= async() => {
+        const balanceUpdate = await tokenContract.events.Transfer(
+            {fromBlock : "earliest", from : accounts[0], to : accounts[0]}
+        )
+        balanceUpdate.on("data", e => {
+            setEvent(e)
+        })
+    }
+
     useEffect(() => {
         getBalance()
-    },[getBalance])
+        captureBalanceUpdate()
+    },[event])
 
     useEffect(() => {
         setTimeout(async () => {
@@ -122,6 +135,7 @@ const StakingForm = (props) => {
                     textContent={hasApproved ? "Stake" : "Approve"}
                     disabled={amount > balance} />
             </form>
+            <StakingDetails poolId={poolId} ></StakingDetails>
         </React.Fragment>
     )
 }
