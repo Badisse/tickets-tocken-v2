@@ -56,7 +56,7 @@ const StakingForm = (props) => {
         if (!stakingTx.status) {
             alert("amount not staked")
         }
-        alert(`successfully staked ${weiValue}`)
+        alert(`successfully staked ${amount}`)
         getBalance()
     }
 
