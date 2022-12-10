@@ -47,7 +47,7 @@ const StakingDetails = (props) => {
         if (!props.poolId){
             return ;
         }
-        const user = await singleStakingContract.methods.getUserInfo(props.poolId, accounts[0]).call()
+        const user = await singleStakingContract.methods.getUserInfo(props.poolId, accounts[0]).call({from : accounts[0]})
         setStakedAmount(await web3.utils.fromWei(user.balance.toString(), "ether"))
     }
 
@@ -55,14 +55,14 @@ const StakingDetails = (props) => {
         if (!props.poolId){
             return 
         }
-        const earned = await singleStakingContract.methods.earned(accounts[0], props.poolId).call()
+        const earned = await singleStakingContract.methods.earned(accounts[0], props.poolId).call({from : accounts[0]})
         setRewards (await web3.utils.fromWei(earned.toString(), "ether"))
     }
 
     useEffect(() => {
         getStakedAmount()
         getClaimable()
-    }, [getStakedAmount, getClaimable])
+    }, [getStakedAmount])
 
     return (
 
@@ -85,7 +85,7 @@ const StakingDetails = (props) => {
             <h5 id="header-subtext"> {`Rewards to be claimed : ${rewards}`} </h5>
             <Button onClick = {claimHandler} 
                     textContent = "Claim"
-                    disabled={!(stakedAmount > 0)}/>
+                    disabled={!(rewards > 0)}/>
         </React.Fragment>
     )
 }
