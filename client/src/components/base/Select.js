@@ -1,7 +1,7 @@
 import React,{useState,createRef} from "react";
 import "../../styles/base/Select.css";
 
-const Select = ({items,onChange}) => {
+const Select = ({items,onChange, name}) => {
 
   const [isOpen, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -29,7 +29,7 @@ const Select = ({items,onChange}) => {
   return (
     <div className="dropdown">
       <button className="dropdown-toggle" type="button" aria-haspopup="true" onClick={onClick}>
-        {value ? value : "Select from Options"}
+        {value ? value : name}
       </button>
       <ul className="dropdown-menu" role="listbox" aria-expanded="false" ref={optionRef} >
         
