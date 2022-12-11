@@ -154,7 +154,7 @@ contract SingleStaking is Ownable {
         uint reward = UserInfo[pIdx][msg.sender].rewards ;
         uint _startingTime = UserInfo[pIdx][msg.sender].startingTime ;
         uint _lockUpPeriod = PoolInfo[pIdx].lockUpPeriod;
-        require (block.timestamp >= _startingTime + _lockUpPeriod, "can't unstake now, wait until your lock-up is finished") ; 
+        require (block.timestamp >= _startingTime + _lockUpPeriod, "can't claim rewards now, wait until your lock-up is finished") ; 
         if (reward > 0){
             UserInfo[pIdx][msg.sender].rewards = 0 ; 
             stakingToken.transfer(msg.sender, reward) ; 
