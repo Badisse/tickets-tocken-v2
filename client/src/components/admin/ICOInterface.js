@@ -26,6 +26,9 @@ const ICOInterface = () => {
             case "2":
                 setNextWFStatus("startTokenDistribution")
                 break
+            case "3":
+                setNextWFStatus("no action")
+                break
         }
     }
 
@@ -44,6 +47,8 @@ const ICOInterface = () => {
             case "startTokenDistribution":
                 await icoContract.methods.startTokenDistribution().send({from : accounts[0]})
                 break
+            case "no action" :
+                const doNothing = () => {}
         }
         setWF()
     }
@@ -70,13 +75,13 @@ const ICOInterface = () => {
     }
 
     if (wfstatus === "startTokenDistribution"){
-        content = <TokenDistribution/>
+        content = <TokenDistribution wfstatus/>
     }
 
     return (
         <React.Fragment>
             {content}
-            <h5 id="header-subtext"> Go to next step </h5>
+            <h5 id="header-subtext"> {wfstatus !== "no action" ? "Go to next step" : "tokens being distributed"} </h5>
             <Button 
             width ="150px"
             height = "30px"
