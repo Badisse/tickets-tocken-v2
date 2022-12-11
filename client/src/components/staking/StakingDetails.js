@@ -50,14 +50,6 @@ const StakingDetails = (props) => {
         setStakedAmount(await web3.utils.fromWei(user.balance.toString(), "ether"))
     }
 
-    const getClaimable = async () => {
-        if (!props.poolId){
-            return 
-        }
-        const earned = await singleStakingContract.methods.earned(accounts[0], props.poolId).call({from : accounts[0]})
-        setRewards (Math.floor(await web3.utils.fromWei(earned.toString(), "ether")))
-    }
-
     const getRemainingLockTime = async () => {
         if (!props.poolId){
             return ;
@@ -71,9 +63,20 @@ const StakingDetails = (props) => {
     }
 
     useEffect(() => {
+        getRemainingLockTime()
+    }, [getRemainingLockTime])
+
+    const getClaimable = async () => {
+        if (!props.poolId){
+            return 
+        }
+        const earned = await singleStakingContract.methods.earned(accounts[0], props.poolId).call({from : accounts[0]})
+        setRewards (Math.floor(await web3.utils.fromWei(earned.toString(), "ether")))
+    }
+
+    useEffect(() => {
         getStakedAmount()
         getClaimable()
-        getRemainingLockTime()
     }, [getStakedAmount])
 
     return (
