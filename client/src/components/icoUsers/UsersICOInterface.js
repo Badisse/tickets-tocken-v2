@@ -3,34 +3,36 @@ import React, { useEffect, useState } from "react"
 
 import "../../styles/Hero.css"
 
+import ContributionForm from "./ContributionForm"
+// import ClaimingPage from "./ClaimingPage"
+
 const UsersICOInterface = () => {
 
     const { state: { icoContract } } = useEth()
     const [event, setEvent] = useState ()
-
-    let content
+    const [content, setContent] = useState ()
 
     const setWF = async () => {
         const WFstatusID = await icoContract.methods.workflowStatus.call().call()
         switch (WFstatusID) {
             case "0":
-                content = <h5> Please wait for the ICO to start </h5>
+                setContent(<h5> Please wait for the ICO to start </h5>)
                 break
             case "1":
-                //content = <ContributionForm/>
+                setContent(<ContributionForm/>)
                 break
             case "2":
-                content = <h5> Wait for the distribution to start </h5>
+                setContent(<h5> Wait for the distribution to start </h5>)
                 break
             case "3":
-                //content = <ClaimingPage/>
+                // setContent(<ClaimingPage/>)
                 break
         }
     }
 
     useEffect(() => {
         setWF()
-    }, [setWF, event])
+    }, [])
 
     const captureEvent = async () => {
         const capturedEvent = await icoContract.events.WorkflowStatusChange({fromBlock : "earliest"})
@@ -41,10 +43,12 @@ const UsersICOInterface = () => {
 
     useEffect(() => {
         captureEvent()
-    }, [captureEvent])
+    }, [])
 
     return (
-        content
+        <React.Fragment>
+            {content}
+        </React.Fragment>
     )
 }
 
