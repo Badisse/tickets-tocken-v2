@@ -12,9 +12,9 @@ contract ICO is Ownable {
             // ::: ICO state variables :: // 
 
     uint decimals ; 
-    uint exchangeRate ; 
-    uint maxAmount ;
-    uint minAmount ; 
+    uint public exchangeRate ; 
+    uint public maxAmount ;
+    uint public minAmount ; 
     uint public maxCap ; 
     uint public totalContribution ; 
     /// will be needed in case of a withdrawal of the TTK tokens is needed
