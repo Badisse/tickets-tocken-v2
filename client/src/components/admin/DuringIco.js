@@ -10,9 +10,14 @@ const DuringIco = () => {
     const [amountRaised, setAmountRaised] = useState ()
 
     const getAmountRaised = async () => {
-        const amount = await web3.eth.getBalance(icoContract._address)
-        const ethValue = await web3.utils.fromWei(amount.toString(), "ether")
-        setAmountRaised (ethValue)
+        const interval = setInterval(async () => {
+            const amount = await web3.eth.getBalance(icoContract._address)
+            const ethValue = await web3.utils.fromWei(amount.toString(), "ether")
+            setAmountRaised (ethValue)
+        }, 1000)
+        return () => {
+            clearInterval(interval)
+        }
     }
 
     useEffect (() => {

@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Staking from "./pages/Staking"
 import Admin from "./pages/Admin"
 import AdminICO from "./pages/AdminICO"
+import UsersICO from "./pages/UsersICO"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
           <Route path="/staking" element={<Staking />} />
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/admin/ICO" element={<AdminICO/>}/>
+          <Route path="/ICO" element={<UsersICO/>}/>
         </Routes>
       </BrowserRouter>,
     </EthProvider>
