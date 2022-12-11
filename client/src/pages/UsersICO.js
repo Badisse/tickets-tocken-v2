@@ -4,7 +4,7 @@ import "../styles/Hero.css";
 import { useEffect, useState } from "react"
 import { useEth } from "../contexts/EthContext";
 
-// import ICOUsersInterface from "../components/admin/ICOUsersInterface"
+import UsersICOInterface from "../components/icoUsers/UsersICOInterface"
 
 function UsersICO() {
 
@@ -37,6 +37,7 @@ function UsersICO() {
             <div id = "hero">
                 <Header></Header>
                 <h5 id="header-subtext"> Welcome ser, you are whitelisted </h5>
+                <UsersICOInterface/>
             </div>
     }
 
