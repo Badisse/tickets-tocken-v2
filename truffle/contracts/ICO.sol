@@ -79,6 +79,10 @@ contract ICO is Ownable {
         uint value
     ) ;
 
+    event WorkflowStatusChange (
+        address emitter
+    ) ;
+
     receive() external payable {}
 
     modifier onlyWhitelisted () {
@@ -116,6 +120,7 @@ contract ICO is Ownable {
         require (msg.value + totalContribution <= maxCap, "maxCap is reached or almost reached") ; 
         totalContribution += msg.value ; 
         UserInfo[msg.sender].amountBought += msg.value * exchangeRate ; 
+        emit Claimed (msg.sender, msg.value) ;
     }
 
         // ::: CLAIM TOKENS ::: // 
@@ -127,6 +132,7 @@ contract ICO is Ownable {
         uint claimable = claimableAmount(msg.sender) ;
         UserInfo[msg.sender].totalClaimed += claimable ; 
         ttk.transfer(msg.sender, claimable) ; 
+        emit Claimed(msg.sender, claimable);
     }
 
     function claimableAmount (address _address) public view returns (uint){

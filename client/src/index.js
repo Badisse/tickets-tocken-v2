@@ -10,6 +10,7 @@ import NFTDetail from "./pages/NFTDetail";
 import Dashboard from './pages/Dashboard';
 import Staking from "./pages/Staking"
 import Admin from "./pages/Admin"
+import AdminICO from "./pages/AdminICO"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +25,7 @@ root.render(
           <Route path="/detail" element={<NFTDetail />} />
           <Route path="/staking" element={<Staking />} />
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/admin/ICO" element={<AdminICO/>}/>
         </Routes>
       </BrowserRouter>,
     </EthProvider>
