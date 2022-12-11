@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { actions } from "./state";
-import eventArtifact from "../../contracts/Event.json"
+import eventArtifact from "../../contracts/EventV2.json"
 
 const connectWallet = async (dispatch) => {
         const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
