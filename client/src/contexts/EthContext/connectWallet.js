@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { actions } from "./state";
-import eventArtifact from "../../contracts/Event.json"
+import eventArtifact from "../../contracts/EventV2.json"
 import tokenArtifact from "../../contracts/TicketToken.json"
 import icoArtifact from "../../contracts/ICO.json"
 import singleStakingArtifact from "../../contracts/SingleStaking.json"
