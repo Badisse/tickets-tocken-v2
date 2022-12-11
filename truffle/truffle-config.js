@@ -26,6 +26,17 @@ module.exports = {
       network_id: 5,
     },
     */
+    mumbai: {
+      provider: function () {
+        return new HDWalletProvider(
+          {
+            mnemonic: { phrase: `${process.env.MNEMONIC}` },
+            providerOrUrl: `wss://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+          }
+        )
+      },
+      network_id: 80001,
+    },
 
   },
 
