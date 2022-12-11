@@ -39,7 +39,6 @@ const StakingDetails = (props) => {
             return
         }
         alert ("you claimed your rewards successfully")
-        const rewards = await singleStakingContract.methods.earned(accounts[0], props.poolId).send({from : accounts[0]})
         getClaimable ()
     }
 
@@ -56,12 +55,25 @@ const StakingDetails = (props) => {
             return 
         }
         const earned = await singleStakingContract.methods.earned(accounts[0], props.poolId).call({from : accounts[0]})
-        setRewards (await web3.utils.fromWei(earned.toString(), "ether"))
+        setRewards (Math.floor(await web3.utils.fromWei(earned.toString(), "ether")))
+    }
+
+    const getRemainingLockTime = async () => {
+        if (!props.poolId){
+            return ;
+        }
+        const staker = await singleStakingContract.methods.getUserInfo(props.poolId, accounts[0]).call({from : accounts[0]})
+        const time0 = staker.startingTime
+        const thisPool = await singleStakingContract.methods.getPoolInfos(props.poolId).call()
+        const poolLock = thisPool.lockUpPeriod
+        const timeRemaining = (poolLock - (Math.floor(Date.now()/1000) - time0))
+        setRemainingTime(timeRemaining > 0 ? timeRemaining : 0)
     }
 
     useEffect(() => {
         getStakedAmount()
         getClaimable()
+        getRemainingLockTime()
     }, [getStakedAmount])
 
     return (
@@ -80,12 +92,13 @@ const StakingDetails = (props) => {
                     width="200px"
                     height="30px"
                     textContent='Unstake'
-                    disabled={!(stakedAmount > 0)}/>
+                    disabled={!(stakedAmount > 0 && amountUnstaking !== 0)}/>
             </form>
-            <h5 id="header-subtext"> {`Rewards to be claimed : ${rewards}`} </h5>
+            <h5 id="header-subtext"> {`Time before you can unstake and claim : ${remainingTime} seconds` } </h5>
+            <h5 id="header-subtext"> {`Rewards to be claimed : ${rewards} TTK` } </h5>
             <Button onClick = {claimHandler} 
                     textContent = "Claim"
-                    disabled={!(rewards > 0)}/>
+                    disabled={false}/>
         </React.Fragment>
     )
 }
