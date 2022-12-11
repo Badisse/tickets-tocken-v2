@@ -79,6 +79,10 @@ contract ICO is Ownable {
         uint value
     ) ;
 
+    event WorkflowStatusChange (
+        address emitter
+    ) ;
+
     receive() external payable {}
 
     modifier onlyWhitelisted () {
