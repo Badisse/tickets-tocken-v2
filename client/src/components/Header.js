@@ -26,6 +26,8 @@ const Header = () => {
           <Link to='/explore'>Explore</Link>
           <Link to='/create'>Create</Link>
           <Link to='/dashboard'>Dashboard</Link>
+          <Link to='/staking'>Staking</Link>
+          <Link to='/ico'>ICO</Link>
 
           <button id="connect-wallet" onClick={handleWallet} >{!accounts ? 'Connect Wallet' : `${accounts[0].substring(0, 6)}...${accounts[0].substring(accounts[0].length-4)}`}</button>
         </div>
