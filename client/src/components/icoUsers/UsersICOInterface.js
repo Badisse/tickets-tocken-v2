@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import "../../styles/Hero.css"
 
 import ContributionForm from "./ContributionForm"
-// import ClaimingPage from "./ClaimingPage"
+import ClaimingPage from "./ClaimingPage"
 
 const UsersICOInterface = () => {
 
@@ -25,14 +25,14 @@ const UsersICOInterface = () => {
                 setContent(<h5> Wait for the distribution to start </h5>)
                 break
             case "3":
-                // setContent(<ClaimingPage/>)
+                setContent(<ClaimingPage/>)
                 break
         }
     }
 
     useEffect(() => {
         setWF()
-    }, [])
+    }, [setWF, event])
 
     const captureEvent = async () => {
         const capturedEvent = await icoContract.events.WorkflowStatusChange({fromBlock : "earliest"})
@@ -43,7 +43,7 @@ const UsersICOInterface = () => {
 
     useEffect(() => {
         captureEvent()
-    }, [])
+    }, [captureEvent])
 
     return (
         <React.Fragment>

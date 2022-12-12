@@ -41,7 +41,7 @@ function AddWhitelist (){
 
     return (
         <React.Fragment>
-              <h5 id="header-subtext"> {`ANY TOKENS SENT DIRECTLY TO THE ICO CONTRACT ADDRESS WILL BE LOST`} </h5>
+            <h5 id="header-subtext"> {`ANY TOKENS SENT DIRECTLY TO THE ICO CONTRACT ADDRESS WILL BE LOST`} </h5>
             <h5 id="header-subtext"> {`You can buy up to 100000 tokens for 10 ETH. Your contribution so far : ${contribution} ETH`} </h5>
             <h5 id="header-subtext"> Contribute below </h5>
             <form onSubmit={buyTokens}>
