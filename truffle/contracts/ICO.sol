@@ -22,10 +22,10 @@ contract ICO is Ownable {
 
             // ::: VESTING state variables ::: // 
 
-    uint vestingStartingTime ; 
-    uint vestingDuration ; 
+    uint public vestingStartingTime ; 
+    uint public vestingDuration ; 
     /// duration of a vesting step in seconds. 1 month here aka 4 weeks = 2419200 seconds
-    uint stepDuration ; 
+    uint public stepDuration ; 
 
     address multiSigAddr ; 
 
