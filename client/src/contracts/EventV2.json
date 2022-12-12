@@ -20412,10 +20412,152 @@
   },
   "networks": {
     "80001": {
-      "events": {},
+      "events": {
+        "0xb77281f633ce79b5a4919200e9f0d7af03d0f96f4c9d1d6c5cf9aa5227b75a13": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "date",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "location",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "image",
+                  "type": "string"
+                },
+                {
+                  "internalType": "enum EventV2.EventType",
+                  "name": "eventType",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "onSale",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "contract TicketV2",
+                  "name": "ticket",
+                  "type": "address"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct EventV2.EventInfo",
+              "name": "newEvent",
+              "type": "tuple"
+            }
+          ],
+          "name": "EventCreated",
+          "type": "event"
+        },
+        "0x8eb86f5e99e5898c44611a778814b0dc22d61a84fbbca047553083bc61745960": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "date",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "location",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "image",
+                  "type": "string"
+                },
+                {
+                  "internalType": "enum EventV2.EventType",
+                  "name": "eventType",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "onSale",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "contract TicketV2",
+                  "name": "ticket",
+                  "type": "address"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct EventV2.EventInfo",
+              "name": "updatedEvent",
+              "type": "tuple"
+            }
+          ],
+          "name": "EventUpdated",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0x9F26daB1De3682BdEDC22f4917709e90E9E7c479",
-      "transactionHash": "0x703aea201d8fe819418d307c95a63381190c0b8c9285aca1cd55342a26f16c60"
+      "address": "0xFBebfE91b1f60c5fc0431E7c2924d5B2FAb78898",
+      "transactionHash": "0xee92ea5fef2a68bdf4a2fc07b75e8488d649cbd242922968b92428360b4ca89c"
     },
     "1670609573450": {
       "events": {
@@ -20570,10 +20712,158 @@
       "links": {},
       "address": "0x7b1A59CD8D353bCAC8959d6a2E7156185e596052",
       "transactionHash": "0xadcc8eb25373f757078fa88b06ded9ff7b6f3436c0367edb5f9501181080ae53"
+    },
+    "1670811304475": {
+      "events": {
+        "0xb77281f633ce79b5a4919200e9f0d7af03d0f96f4c9d1d6c5cf9aa5227b75a13": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "date",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "location",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "image",
+                  "type": "string"
+                },
+                {
+                  "internalType": "enum EventV2.EventType",
+                  "name": "eventType",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "onSale",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "contract TicketV2",
+                  "name": "ticket",
+                  "type": "address"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct EventV2.EventInfo",
+              "name": "newEvent",
+              "type": "tuple"
+            }
+          ],
+          "name": "EventCreated",
+          "type": "event"
+        },
+        "0x8eb86f5e99e5898c44611a778814b0dc22d61a84fbbca047553083bc61745960": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "date",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "location",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "image",
+                  "type": "string"
+                },
+                {
+                  "internalType": "enum EventV2.EventType",
+                  "name": "eventType",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "onSale",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "contract TicketV2",
+                  "name": "ticket",
+                  "type": "address"
+                }
+              ],
+              "indexed": false,
+              "internalType": "struct EventV2.EventInfo",
+              "name": "updatedEvent",
+              "type": "tuple"
+            }
+          ],
+          "name": "EventUpdated",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xa3bFFF13294a550B4d875C0Fbb6D3b73177F307F",
+      "transactionHash": "0xd72fe538fe2c863468bb6be42b6e0875f57d0f3ccecca8e8bdd8bc9a18a070d9"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2022-12-11T16:21:52.669Z",
+  "updatedAt": "2022-12-12T03:31:06.530Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
