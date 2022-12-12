@@ -12,9 +12,9 @@ contract ICO is Ownable {
             // ::: ICO state variables :: // 
 
     uint decimals ; 
-    uint exchangeRate ; 
-    uint maxAmount ;
-    uint minAmount ; 
+    uint public exchangeRate ; 
+    uint public maxAmount ;
+    uint public minAmount ; 
     uint public maxCap ; 
     uint public totalContribution ; 
     /// will be needed in case of a withdrawal of the TTK tokens is needed
@@ -22,10 +22,10 @@ contract ICO is Ownable {
 
             // ::: VESTING state variables ::: // 
 
-    uint vestingStartingTime ; 
-    uint vestingDuration ; 
+    uint public vestingStartingTime ; 
+    uint public vestingDuration ; 
     /// duration of a vesting step in seconds. 1 month here aka 4 weeks = 2419200 seconds
-    uint stepDuration ; 
+    uint public stepDuration ; 
 
     address multiSigAddr ; 
 
