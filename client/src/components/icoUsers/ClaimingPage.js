@@ -17,27 +17,26 @@ const ClaimingPage = () => {
         setContribution(ethContribution)
 
         const weiClaimable = await icoContract.methods.claimableAmount(accounts[0]).call()
+        console.log(weiClaimable)
         const ethClaimable = await web3.utils.fromWei((weiClaimable).toString(), "ether")
         setClaimable(ethClaimable)
     }
 
     useEffect(() => {
         getAmounts()
-    }, [getAmounts])
+    }, [])
 
     const getPeriods = async () => {
         const time0 = await icoContract.methods.vestingStartingTime.call().call()
         const vestingTime = await icoContract.methods.vestingDuration.call().call()
         setVestingPeriod(vestingTime / 60)
+
         const stepDuration = await icoContract.methods.stepDuration.call().call()
-        console.log(time0)
-        console.log(stepDuration)
         const now = (Math.floor(Date.now()/1000))
         const nextStep = Math.ceil((now - time0) / stepDuration)
-        console.log(nextStep)
-        setRemainingTime(((time0 + nextStep * stepDuration) - now) / 60)
-        console.log((time0 + (nextStep * stepDuration)))
-        console.log(now)
+        /// Epochs operatins are impossible on javascript, impossible to show how long there is lest
+        /// setRemainingTime(((time0 + nextStep * stepDuration) - now) / 60)
+        setRemainingTime(1)
     }
 
     useEffect(() => {
@@ -50,7 +49,7 @@ const ClaimingPage = () => {
             alert ("cannot claim now")
             return ;
         }
-        alert (`successfully claimed ${claimable}`)
+        alert (`successfully claimed`)
     }
 
     return (

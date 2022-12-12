@@ -31,7 +31,7 @@ module.exports = {
         return new HDWalletProvider(
           {
             mnemonic: { phrase: `${process.env.MNEMONIC}` },
-            providerOrUrl: `wss://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+            providerOrUrl: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_ID}`,
           }
         )
       },

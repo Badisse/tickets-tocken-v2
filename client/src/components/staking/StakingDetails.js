@@ -58,7 +58,7 @@ const StakingDetails = (props) => {
         const time0 = staker.startingTime
         const thisPool = await singleStakingContract.methods.getPoolInfos(props.poolId).call()
         const poolLock = thisPool.lockUpPeriod
-        const timeRemaining = (poolLock - (Math.floor(Date.now()/1000) - time0))
+        const timeRemaining = Math.floor((poolLock - (Math.floor(Date.now()/1000) - time0)) / 60)
         setRemainingTime(timeRemaining > 0 ? timeRemaining : 0)
     }
 
@@ -97,7 +97,7 @@ const StakingDetails = (props) => {
                     textContent='Unstake'
                     disabled={!(stakedAmount > 0 && amountUnstaking !== 0)}/>
             </form>
-            <h5 id="header-subtext"> {`Time before you can unstake and claim : ${remainingTime} seconds` } </h5>
+            <h5 id="header-subtext"> {`Time before you can unstake and claim : ${remainingTime} minutes` } </h5>
             <h5 id="header-subtext"> {`Rewards to be claimed : ${rewards} TTK` } </h5>
             <Button onClick = {claimHandler} 
                     textContent = "Claim"
