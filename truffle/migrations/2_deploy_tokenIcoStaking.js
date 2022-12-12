@@ -20,8 +20,8 @@ module.exports = async function (deployer) {
   const maxAmount = 10
   const exchangeRate = 10000
   const maxCap = 3000
-  const vestingDuration = 6000
-  const stepDuration = 600
+  const vestingDuration = 600
+  const stepDuration = 60
 
   await deployer.deploy(
     ICO, 
